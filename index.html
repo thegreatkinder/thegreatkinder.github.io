@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <title>
+   더크는킨더 정철어학원 상도캠퍼스
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700;900&amp;display=swap" rel="stylesheet"/>
+  <style>
+   :root{
+      --bg:#f7f9fc;
+      --card:#ffffff;
+      --accent:#0b74de;
+      --accent-2:#0a58a8;
+      --muted:#6b7280;
+      --radius:14px;
+      --max-width:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Noto Sans KR',sans-serif;
+      background:linear-gradient(180deg,var(--bg),#eef4fb 60%);
+      color:#111827;
+      line-height:1.5;
+    }
+    .container{max-width:var(--max-width);margin:0 auto;padding:32px}
+    header{padding:18px 0;display:flex;flex-direction:column;align-items:center;text-align:center}
+    header img{height:72px;border-radius:10px;margin-bottom:16px}
+    nav ul{list-style:none;margin:0;padding:0;display:flex;gap:18px;justify-content:center}
+    nav a{text-decoration:none;color:#111827;font-weight:500}
+
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:center;padding:48px 0}
+    .hero-card{background:linear-gradient(180deg,var(--card),#fbfdff);border-radius:var(--radius);padding:36px;box-shadow:0 8px 30px rgba(12,38,63,0.08)}
+    .eyebrow{display:inline-block;background:rgba(11,116,222,0.08);color:var(--accent);padding:6px 10px;border-radius:999px;font-weight:700;font-size:13px;margin-bottom:14px}
+    h2{margin:0 0 12px 0;font-size:28px;white-space:nowrap}
+    p.lead{margin:0 0 20px 0;color:var(--muted);font-size:15px}
+    .cta{display:flex;gap:12px}
+    .btn{padding:12px 18px;border-radius:10px;background:var(--accent);color:white;text-decoration:none;font-weight:700}
+    .btn.secondary{background:transparent;color:var(--accent);border:2px solid rgba(11,116,222,0.14)}
+
+    .info{background:linear-gradient(180deg,rgba(11,116,222,0.06),rgba(10,88,168,0.03));border-radius:12px;padding:20px}
+    .info h3{margin:0 0 10px 0;font-size:16px}
+    .info p{margin:0;color:var(--muted);font-size:14px}
+    .badge{display:inline-block;background:white;padding:8px 12px;border-radius:999px;font-weight:700;margin-top:12px;box-shadow:0 6px 18px rgba(11,116,222,0.06)}
+
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:40px 0}
+    .service{background:var(--card);padding:20px;border-radius:12px;box-shadow:0 8px 20px rgba(12,38,63,0.04)}
+    .service h4{margin:0 0 6px 0}
+    .muted{color:var(--muted)}
+
+    .about{display:flex;gap:24px;align-items:center;margin-bottom:40px}
+    .about .text{flex:1}
+    .about .visual{width:360px;height:220px;border-radius:12px;background:url('thegreat_jc_logo.jpg') center/cover no-repeat;display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:20px}
+
+    footer{padding:28px 0;color:var(--muted);font-size:14px}
+    .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:16px}
+    .socials{display:flex;gap:10px}
+    .socials a{padding:8px;border-radius:8px;background:#fff;border:1px solid rgba(16,24,40,0.04);text-decoration:none}
+
+    .kinder{color:#1f3a20;font-weight:700}
+    .jc{color:#E73328;font-weight:700}
+
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .about{flex-direction:column}
+      .services{grid-template-columns:1fr}
+      h2{white-space:normal}
+    }
+  </style>
+  <style>
+   @media (max-width:900px){
+      .hero img { margin-bottom:20px; }
+    }
+  </style>
+ </head>
+ <body>
+  <div class="container">
+   <header>
+    <img alt="더크는킨더 정철어학원 로고" src="thegreat_jc_logo.jpg"/>
+    <nav>
+     <ul>
+      <li>
+       <a href="#about">
+        소개
+       </a>
+      </li>
+      <li>
+       <a href="#services">
+        교육서비스
+       </a>
+      </li>
+      <li>
+       <a href="#contact">
+        문의
+       </a>
+      </li>
+     </ul>
+    </nav>
+   </header>
+   <main>
+    <section class="hero">
+     <div class="hero-card">
+      <span class="eyebrow">
+       영유아 · 초중등 연계교육
+      </span>
+      <h1>
+       <span style="display:block;white-space:nowrap">
+        표준보육·누리교육은
+        <span class="kinder">
+         <b>
+          더크는킨더
+         </b>
+        </span>
+        어린이집
+       </span>
+       <span style="display:block;white-space:nowrap">
+        유초중등 영어교육은
+        <span class="jc">
+         <b>
+          정철어학원
+         </b>
+        </span>
+        상도캠퍼스
+       </span>
+      </h1>
+      <p class="lead">
+       <span class="kinder">
+        더크는킨더
+       </span>
+       +
+       <span class="jc">
+        정철어학원 상도캠퍼스
+       </span>
+       는 체계적인 커리큘럼과 따뜻한 교육 환경을 통해 아이들의 창의성 계발과 언어 발달을 균형 있게 지원합니다. 영유아 전문 보육 · 교육 프로그램과 유치부 · 초등부 · 중등부 영어 교육을 유기적으로 연계하여,
+전 연령대의 학습이 자연스럽게 이어지도록 돕습니다.
+      </p>
+      <div class="cta">
+       <a class="btn" href="https://forms.gle/SFKPTJDXyrEfwLsF7">
+        2026학년도 유치부 상담 신청
+       </a>
+       <!--<a class="btn secondary" href="#services">커리큘럼 보기</a>-->
+      </div>
+     </div>
+     <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; margin-top:20px;">
+      <img alt="정철어학원 THE FIRST AND THE ORIGINAL" src="thefirst.jpg" style="max-width:420px; height:auto; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,0.08);"/>
+      <aside class="info" style="flex:1; min-width:280px;">
+       <h3>
+        운영 포인트
+       </h3>
+       <p>
+        •
+        <b>
+         HYBRID EDUCATION
+        </b>
+        - 융합형 배움의 새로운 표준
+       </p>
+       <p>
+        •
+        <b>
+         ENGLISH TALK STAGE
+        </b>
+        - 자신 있게 말하는 무대 영어교육
+       </p>
+       <p>
+        •
+        <b>
+         ECHO CLASS : RETALK!
+        </b>
+        - 복습·확장·정착의 학습 사이클 완성
+       </p>
+       <div class="badge">
+        수시 상담 가능
+       </div>
+      </aside>
+     </div>
+    </section>
+
+   <!-- 클릭 시 이동하는 배너 -->
+<a href="https://forms.gle/SFKPTJDXyrEfwLsF7" target="_blank" class="banner-link">
+  <img src="banner0.jpg"
+       alt="신입생 모집 배너"
+       class="banner-img" />
+</a>
+
+<style>
+.banner-link {
+  display: block;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  margin: 40px 0;
+}
+.banner-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+.banner-img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.05);
+}
+</style>
+
+    <section id="services">
+     <div style="display:flex;justify-content:space-between;align-items:end;margin-bottom:14px">
+      <h3 style="margin:0">
+       주요 교육서비스 분야
+      </h3>
+      <p class="muted" style="margin:0">
+       교육상담 · 영아보육 · 유아교육 · 영어교육
+      </p>
+     </div>
+     <div class="services">
+      <div class="service">
+       <h4>
+        영유아 보육 및 교육
+        <!--(<span class="kinder">더크는킨더</span> 어린이집)-->
+       </h4>
+       <p class="muted">
+        <span class="kinder">
+         더크는킨더 어린이집
+        </span>
+        은 표준보육·누리과정을 바탕으로 신체운동·건강, 의사소통, 사회관계, 예술경험, 자연탐구를 고르게 경험하도록 합니다. 놀이 속에서 배우고, 생활 속에서 익히며, 아이의 성장을 따뜻하게 지원합니다.
+       </p>
+      </div>
+      <div class="service">
+       <h4>
+        유치부 · 초등부 · 중등부 영어 교육
+        <!--(<span class="jc">정철어학원</span> 상도캠퍼스)-->
+       </h4>
+       <p class="muted">
+        <span class="jc">
+         정철어학원 상도캠퍼스
+        </span>
+        는 전통적인 영어 교육 철학과 독보적인 커리큘럼이 있습니다. 최적의 학습 설계, 단계별 맞춤형 교육, 균형 있는 영어 실력, 자기주도 학습, 체계적인 학습 관리로 탄탄한 영어 실력을 완성합니다.
+       </p>
+      </div>
+      <div class="service">
+       <h4>
+        부모 소통 &amp; 평가
+       </h4>
+       <p class="muted">
+        SPEAKING TEST AI 인증제, OPEN CLASS 학부모 참여 수업, 그리고 영유아 발달 관찰 평가, 초등·중등 정기 학습 리포트 및 개별 상담을 통해 가정과 기관이 함께 아이의 발달과 성장을 세심하게 지켜봅니다.
+       </p>
+      </div>
+     </div>
+    </section>
+    <section class="about" id="about">
+     <div class="text">
+      <h3>
+       <span class="kinder">
+        더크는킨더
+       </span>
+       +
+       <span class="jc">
+        정철어학원 상도캠퍼스
+       </span>
+       소개
+      </h3>
+      <p class="muted">
+       우리는 아이의 발달 단계와 개인적 특성을 세심하게 이해하고,
+        그에 맞춘
+       <b>
+        맞춤형 교육
+       </b>
+       을 통해 성장의 단단한 기반을 만들어 갑니다.
+        단순한 지식 전달을 넘어, 놀이와 탐구 중심의 경험 속에서
+        아이들이 스스로 배우고 표현하며 성장할 수 있도록 돕습니다.
+        또한
+       <b>
+        역량 중심 교육
+       </b>
+       을 통해 사고력·창의력·협동심을 고루 기르고,
+       <b>
+        자기주도 학습 역량
+       </b>
+       을 강화하여 학습의 주체로 성장할 수 있게 합니다.
+        더 나아가 스스로 생각하고 말하며 표현하는 과정을 통해
+       <b>
+        영어 의사소통 능력
+       </b>
+       을 자연스럽게 발전시키며,
+        언어를 통해 세상과 소통하는 힘을 키워갑니다.
+        전문 교사진과 검증된 교수법을 바탕으로,
+        아이들이
+       <b>
+        안전하고 활기찬 환경
+       </b>
+       에서 즐겁게 배우며
+        균형 잡힌 전인적 성장을 이룰 수 있도록 지원합니다.
+       <br/>
+       <br/>
+       <em>
+        We carefully understand each child’s developmental stage and individuality, 
+        building a solid foundation for growth through
+        <b>
+         personalized education
+        </b>
+        . 
+        Beyond the simple transfer of knowledge, we encourage children to learn and express themselves 
+        through play and exploration. Through a
+        <b>
+         competency-based approach
+        </b>
+        , 
+        we foster critical thinking, creativity, and collaboration, 
+        helping students develop
+        <b>
+         self-directed learning skills
+        </b>
+        . 
+        As they learn to think, speak, and express in English, 
+        their
+        <b>
+         communication skills
+        </b>
+        naturally flourish, 
+        empowering them to connect with the world through language. 
+        With experienced teachers and proven teaching methods, 
+        we provide a
+        <b>
+         safe and dynamic learning environment
+        </b>
+        where children grow joyfully and holistically.
+       </em>
+      </p>
+      <ul style="color:var(--muted);margin-top:12px">
+       <li>
+        검증된 커리큘럼
+       </li>
+       <li>
+        전문 보육 · 교육 인력
+       </li>
+       <li>
+        정기 평가와 피드백
+       </li>
+      </ul>
+     </div>
+     <!--<div class="visual"></div>-->
+    </section>
+    <section id="contact" style="margin-bottom:40px">
+     <h3>
+      문의 및 상담
+     </h3>
+     <p>
+      ■ 주소 : (우 06962) 서울 동작구 성대로31길 2 더크는킨더 + 정철어학원 상도캠퍼스
+     </p>
+     <p>
+      ■ 전화 : 02-823-0733 &amp; 010-3376-0038
+     </p>
+     <p class="muted">
+      상담 신청은 아래 버튼을 눌러주세요. 원하시면 전화나 이메일로도 접수 가능합니다.
+     </p>
+     <div style="margin-top:12px">
+      <a class="btn" href="tel:028230733">
+       상담전화 문의
+      </a>
+      <a class="btn secondary" href="mailto:jlee@thegreatkinder.com">
+       이메일 문의
+      </a>
+     </div>
+    </section>
+   </main>
+   <footer>
+    <div class="footer-inner">
+     <div>
+      ©
+      <strong>
+       <span class="kinder">
+        더크는킨더
+       </span>
+       +
+       <span class="jc">
+        정철어학원 상도캠퍼스
+       </span>
+      </strong>
+      · 모든 권리 보유
+     </div>
+     <div class="socials">
+      <!--<a href="#">인스타그램</a>-->
+      <!--<a href="#">유튜브</a>-->
+      <!--<a href="#">네이버 블로그</a>-->
+     </div>
+    </div>
+   </footer>
+  </div>
+ </body>
+</html>
