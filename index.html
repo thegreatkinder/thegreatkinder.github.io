@@ -75,10 +75,149 @@
       .hero img { margin-bottom:20px; }
     }
   </style>
+  <style>
+   /* ===== Hamburger to X animation + FAB contact bar ===== */
+.nav-toggle .bar{
+  transition: transform .25s ease, opacity .25s ease;
+  transform-origin: 4px 1.5px;
+}
+.nav-toggle.open .bar:nth-child(1){ transform: translateY(8px) rotate(45deg); }
+.nav-toggle.open .bar:nth-child(2){ opacity: 0; }
+.nav-toggle.open .bar:nth-child(3){ transform: translateY(-8px) rotate(-45deg); }
+
+.fab-bottom{
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 14px;
+  z-index: 1100;
+  display: flex;
+  gap: 10px;
+  background: rgba(255,255,255,0.96);
+  border: 1px solid rgba(16,24,40,0.08);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+  border-radius: 14px;
+  padding: 10px;
+}
+.fab-bottom a{
+  display: inline-block;
+  padding: 12px 14px;
+  font-weight: 800;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  background: #0b74de;
+  line-height: 1;
+}
+.fab-bottom a.secondary{
+  background: #ffffff;
+  color: #0b74de;
+  border: 2px solid rgba(11,116,222,0.25);
+}
+@media (min-width: 901px){ .fab-bottom{ display: none; } }
+@media (max-width: 900px){ .fab-bottom{ width: min(94%, 560px); } }
+  </style>
+  <style>
+   /* ===== Enhanced paragraph readability and justification ===== */
+p, .lead, .muted {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+  word-break: keep-all;
+}
+  </style>
+  <style>
+   /* ===== 특정 섹션(운영포인트, 문의 및 상담)만 왼쪽 정렬 ===== */
+.info p,
+#contact p {
+  text-align: left !important;
+  text-justify: none !important;
+}
+  </style>
+  <!-- Pretendard (한글), Lato (영문) -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&amp;display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet"/>
+  <style>
+   body {
+  font-family: 'Pretendard', 'Lato', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+}
+:lang(en),
+p:lang(en),
+span:lang(en),
+h1:lang(en),
+h2:lang(en),
+h3:lang(en),
+h4:lang(en) {
+  font-family: 'Lato', 'Pretendard', sans-serif;
+  font-weight: 400;
+}
+h1, h2, h3 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+p, .lead, .muted {
+  font-weight: 400;
+  font-size: 15px;
+  color: #2c2c2c;
+}
+  </style>
+  <style>
+   /* ===== Brand consistency enhancements (buttons, headings, colors) ===== */
+
+/* Buttons */
+.btn {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: none;
+  border-radius: 12px;
+  padding: 13px 20px;
+  transition: all 0.25s ease;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(11,116,222,0.25);
+}
+.btn.secondary:hover {
+  background: rgba(11,116,222,0.05);
+}
+
+/* Headings */
+h1, h2, h3 {
+  font-family: 'Pretendard', 'Lato', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #1f3a20; /* Kinder deep green */
+}
+
+/* English slogan in hero (if explicitly marked) */
+.hero h2 span[lang="en"], .hero h1 span[lang="en"] {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  color: #0b74de;
+}
+
+/* Brand accents */
+.kinder { color: #1f3a20; font-weight: 700; }
+.jc { color: #E73328; font-weight: 700; }
+a:hover { color: #E73328; }
+  </style>
+  <style>
+   /* ===== Responsive Banner (Desktop: cover / Mobile: contain) ===== */
+.hero-banner, .banner-img { width: 100%; display: block; height: auto; }
+.banner-img { object-fit: cover; }
+@media (max-width: 900px){
+  .banner-img { object-fit: contain; }
+}
+  </style>
  </head>
  <body>
   <div class="container">
-   <header>
+   <!--<header>
     <img alt="더크는킨더 정철어학원 로고" src="thegreat_jc_logo.jpg"/>
     <nav>
      <ul>
@@ -99,7 +238,35 @@
       </li>
      </ul>
     </nav>
+   </header>-->
+   <picture class="hero-banner">
+    <source media="(max-width: 900px)" srcset="thegreat_jc_logo.jpg"/>
+    <img alt="더크는킨더 정철어학원 메인 배너" class="banner-img" src="thegreat_jc_logo.jpg"/>
+   </picture>
+
+<header>
+    <nav>
+     <ul>
+      <li>
+       <a href="#about">
+        소개
+       </a>
+      </li>
+      <li>
+       <a href="#services">
+        교육서비스
+       </a>
+      </li>
+      <li>
+       <a href="#contact">
+        문의
+       </a>
+      </li>
+     </ul>
+    </nav>
    </header>
+
+
    <main>
     <section class="hero">
      <div class="hero-card">
@@ -177,16 +344,12 @@
       </aside>
      </div>
     </section>
-
-   <!-- 클릭 시 이동하는 배너 -->
-<a href="https://forms.gle/SFKPTJDXyrEfwLsF7" target="_blank" class="banner-link">
-  <img src="banner0.jpg"
-       alt="신입생 모집 배너"
-       class="banner-img" />
-</a>
-
-<style>
-.banner-link {
+    <!-- 클릭 시 이동하는 배너 -->
+    <a class="banner-link" href="https://forms.gle/SFKPTJDXyrEfwLsF7" target="_blank">
+     <img alt="신입생 모집 배너" class="banner-img" src="banner0.jpg"/>
+    </a>
+    <style>
+     .banner-link {
   display: block;
   overflow: hidden;
   border-radius: 10px;
@@ -203,8 +366,7 @@
   transform: scale(1.05);
   filter: brightness(1.05);
 }
-</style>
-
+    </style>
     <section id="services">
      <div style="display:flex;justify-content:space-between;align-items:end;margin-bottom:14px">
       <h3 style="margin:0">
@@ -387,6 +549,26 @@
      </div>
     </div>
    </footer>
+  </div>
+  <script>
+   (function(){
+  const btn = document.querySelector('button.nav-toggle');
+  const nav = document.getElementById('mainNav');
+  if(!btn || !nav) return;
+  btn.addEventListener('click', function(){
+    const isOpen = nav.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+})();
+  </script>
+  <div aria-label="빠른 상담" class="fab-bottom" role="group">
+   <a href="tel:01033760038">
+    상담 휴대전화 연결
+   </a>
+   <a class="secondary" href="https://forms.gle/SFKPTJDXyrEfwLsF7" rel="noopener" target="_blank">
+    2026학년도 유치부 상담 신청
+   </a>
   </div>
  </body>
 </html>
