@@ -11,7 +11,10 @@
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#1f3a20" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet" />
+
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet" /> <!--Swiper CSS-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
   <style>
     :root{
       --kinder:#1f3a20;
@@ -343,11 +346,29 @@ section h2{
         </div>
       </div>
       <!--머리글 제목과 내용 종료-->
+
       <!--중간 배너 부분 시작-->
+      <!--
       <div class="banner">
         <p><img src="hero-banner.png" class="reveal-up" alt="2026학년도 더크는킨더 + 정철어학원 신입생 모집" /></p>
       </div>
+      -->
       <!--중간 배너 부분 종료-->
+      
+      <!---->
+      <div class="swiper hero-swiper">
+       <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="banner1_premium.png" class="hero-img" /></div>
+        <div class="swiper-slide"><img src="banner2_premium.png" class="hero-img" /></div>
+        <div class="swiper-slide"><img src="banner3_premium.png" class="hero-img" /></div>
+        <div class="swiper-slide"><img src="banner4_premium.png" class="hero-img" /></div>
+        <div class="swiper-slide"><img src="banner5_premium.png" class="hero-img" /></div>
+       </div>
+      </div>
+
+      <!---->
+
+
     </div>
   </section>
   
@@ -362,7 +383,7 @@ section h2{
           <h3>더크는킨더</h3>
             <p>2007년에 문을 연 더크는킨더는 아이들이 세상을 살아가는 힘을 스스로 키워가도록 돕는 역량 중심 교육기관입니다.</p>
             <p>0~2세 아이들은 매일의 따뜻한 품과 안정된 일상 속에서 조금씩 자라며 세상을 배워갑니다. 사랑받는 경험을 통해 자신을 믿는 법을 배우고, 그 마음이 3세 이후 누리과정으로 자연스럽게 이어질 수 있도록, 아이의 하루를 정성으로 채워갑니다.</p>
-            <p>3~5세를 위한 더크는 교육은 절충형 융합교육과정으로 이루어져 있습니다. 아이들이 놀이 속에서 배우고, 배움 속에서 즐거움을 느끼며 바른 인성과 자신감을 바탕으로 자아를 확립하며, 스스로 생각하고 탐구하는 힘을 기르도록 합니다.</p> 
+            <p>3~5세를 위한 더크는킨더 교육은 절충형 융합교육과정으로 이루어져 있습니다. 아이들이 놀이 속에서 배우고, 배움 속에서 즐거움을 느끼며 바른 인성과 자신감을 바탕으로 자아를 확립하며, 스스로 생각하고 탐구하는 힘을 기르도록 합니다.</p> 
             <p>언어를 통한 표현력, 친구와의 소통, 창의적 탐구활동까지 — 모든 순간이 아이의 가능성을 확장하는 배움의 과정입니다. 아이들이 “할 수 있다”는 자신감을 느끼며, 즐겁게 배우는 경험이 곧 미래를 살아가는 힘이 되도록 함께합니다.</p>
             <p>더크는킨더는 앞으로도 아이 한 명 한 명의 마음에 귀 기울이며, 유아중심 놀이학습과 초등연계 교육과정으로 아이들이 행복하게 배우고 단단하게 자라나는 성장을 함께 만들어가겠습니다.</p>
         </div>
@@ -564,9 +585,9 @@ section h2{
          <div style="margin-top:.1rem;">🚗</div>
          <div>
           <strong>주차 안내</strong><br>
-          기관 사정상 주차 공간이 협소하여, 방문 시 가급적 대중교통 이용을 권장드립니다.<br> 
-          건물 바로앞에 동작12번 마을버스 정류장이 있습니다.<br>
-          개별상담 예약 시에는 주차 공간을 마련해드립니다. 
+          · 기관 사정상 주차 공간이 협소하여, 방문 시 가급적 대중교통 이용을 권장드립니다.<br> 
+          · 건물 바로앞에 동작12번 마을버스 정류장이 있습니다.<br>
+          · 개별상담 예약 시에는 주차 공간을 마련해드립니다. 
          </div>
         </div>
 
@@ -588,6 +609,28 @@ section h2{
     </div>
    </div>
   </footer>
+
+
+<!---->
+<!-- ⭐ Swiper JS 불러오기 ⭐ -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- ⭐ Swiper 초기화 코드 ⭐ -->
+<script>
+  var swiper = new Swiper(".hero-swiper", {
+    loop: true,
+    autoplay: {
+      delay: 3500,
+      disableOnInteraction: false,
+    },
+    effect: "fade",
+    fadeEffect: { crossFade: true },
+    speed: 800,
+  });
+</script>
+
+<!---->
+
 
 <script>
 const sections = document.querySelectorAll('section[id]');
