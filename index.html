@@ -99,14 +99,205 @@
 }
 /* CSS - footer 리디자인 종료 */
 
-@media (max-width: 768px){          /* 모바일에서 상단 메뉴가 짤리는 문제 해결 */
+/* 모바일에서 상단 메뉴가 짤리는 문제 해결 */
+ @media (max-width: 768px){          /* 모바일에서 상단 메뉴가 짤리는 문제 + 스와이프 가능, 스크롤바는 숨김 */
   .menu{
     overflow-x:auto;
     white-space:nowrap;
+    -ms-overflow-style:none;   /* IE, Edge */
+    scrollbar-width:none;      /* Firefox */
+  }
+  .menu::-webkit-scrollbar{
+    display:none;              /* Chrome, Safari */
   }
   .menu a{
     flex-shrink:0;
   }
+}
+
+/* 상담문의 섹션 카드 살짝 프리미엄 그림자 */
+#contact .card{
+  box-shadow:0 10px 25px rgba(15,23,42,.08);
+}
+
+/* 지도 버튼 영역 */
+.map-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+  margin-top:1rem;
+}
+
+.map-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:.35rem;
+  padding:.65rem 1rem;
+  border-radius:999px;
+  font-weight:600;
+  font-size:.95rem;
+  border:1px solid transparent;
+}
+
+.map-btn svg{
+  width:18px;
+  height:18px;
+}
+
+/* 브랜드 느낌 색상 */
+.map-btn-naver{
+  background:#03c75a;
+  color:#ffffff;
+}
+
+.map-btn-kakao{
+  background:#fee500;
+  color:#3a1d1d;
+}
+
+.map-btn-google{
+  background:#ffffff;
+  color:#111827;
+  border-color:#d1d5db;
+}
+
+/* 주차 안내 박스 */
+.parking-info{
+  margin-top:.9rem;
+  font-size:.9rem;
+  color:#6b7280;
+  line-height:1.6;
+  display:flex;
+  align-items:flex-start;
+  gap:.4rem;
+}
+
+.parking-info-emoji{
+  margin-top:.1rem;
+}
+
+/* 현재 위치 하이라이트 스타일 */
+.menu a.active{
+  color:#1f3a20;                  /* 더크는킨더 그린 */
+  background:rgba(31,58,32,0.06); /* 옅은 그린 배경 */
+  border-radius:999px;
+}
+
+
+/* ---- Global Typography Upgrade ---- */
+
+/* 기본 텍스트 (본문) */
+body{
+  font-weight: 400;
+  line-height: 1.75;        /* 가독성 향상 */
+  letter-spacing: -0.1px;   /* 한국어 웹에서 고급 사이트들이 쓰는 설정 */
+}
+
+/* 섹션 제목 */
+section h2{
+  font-weight: 700;         /* 볼드하게 통일 */
+  letter-spacing: -0.5px;   /* 고급 브랜드 스타일 */
+  line-height: 1.35;
+}
+
+/* 카드 제목 */
+.card h2, .card h3{
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  line-height: 1.35;
+}
+
+/* 본문 문단 */
+.card p,
+.card li,
+.section p{
+  line-height: 1.75;
+  font-size: 1rem;
+  letter-spacing: -0.05px;
+}
+
+/* 네비게이션 메뉴 텍스트 */
+.menu a{
+  font-weight: 500;
+  letter-spacing: -0.2px;
+}
+
+/* 버튼 텍스트 */
+.btn{
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}
+
+/* 강조 색 텍스트 */
+.text-kinder, .text-jc{
+  letter-spacing: -0.3px;
+}
+
+/* 섹션 제목 밑줄 기본 상태 */
+.section h2{
+  position:relative;
+  display:inline-block;
+  padding-bottom:.2rem;
+}
+
+.section h2::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-.3rem;
+  height:2px;
+  width:0;
+  background:#1f3a20;          /* 더크는킨더 그린 */
+  border-radius:999px;
+  transition:width .4s ease;
+  opacity:.9;
+}
+
+/* 해당 섹션이 화면에 들어왔을 때 밑줄이 자연스럽게 나타나도록 */
+.section.in-view h2::after{
+  width:56px;                  /* 밑줄 길이 (원하면 늘리거나 줄여도 됨) */
+}
+
+/* Hero 메인 제목 애니메이션 */
+.hero h1{
+  opacity:0;
+  transform:translateY(12px);
+  letter-spacing:0.2em;             /* 처음에는 좀 넓게 */
+  animation:heroTitleIn .9s ease-out .1s forwards;
+}
+
+@keyframes heroTitleIn{
+  0%{
+    opacity:0;
+    transform:translateY(18px);
+    letter-spacing:0.3em;
+  }
+  60%{
+    opacity:1;
+    transform:translateY(0);
+    letter-spacing:0.1em;
+  }
+  100%{
+    opacity:1;
+    transform:translateY(0);
+    letter-spacing:0.02em;
+  }
+}
+
+/* ---- 섹션/카드 등장 애니메이션 (페이드업) ---- */
+
+.reveal-up{
+  opacity:0;
+  transform:translateY(18px);
+  transition:
+    opacity .6s ease-out,
+    transform .6s ease-out;
+  will-change:opacity, transform;
+}
+
+.reveal-up.is-visible{
+  opacity:1;
+  transform:translateY(0);
 }
 
 
@@ -135,16 +326,16 @@
     <!--<div class="container grid">-->
       <!--로고 배너 시작-->
       <div class="banner">
-        <p><img src="thegreatjc.png" alt="더크는킨더 정철어학원 로고" /></p>
+        <p><img src="thegreatjc.png" class="reveal-up" alt="더크는킨더 정철어학원 로고" /></p>
         <br>
       </div>
       <!--로고 배너 종료-->
       <!--머리글 제목과 내용 시작-->
       <div>
         <!--<h1>유아교육은 <span class="text-kinder">더크는킨더</span> 어린이집<br> 영어교육은 <span class="text-jc">정철어학원 상도캠퍼스</span></h1>-->
-        <h1>유아교육은 <span class="text-kinder">더크는킨더</span> + 영어교육은 <span class="text-jc">정철어학원</span></h1>
+        <h1 class="reveal-up">유아교육은 <span class="text-kinder">더크는킨더</span> + 영어교육은 <span class="text-jc">정철어학원</span></h1>
         <!--<h1>표준보육·누리교육은 더크는킨더 어린이집 + 유초중등 영어교육은 정철어학원 상도캠퍼스</h1>-->
-        <p><b><span class="text-kinder">더크는킨더</span></b>는 0~5세 영유아를 위한 국가수준의 표준보육과정과 누리교육과정 기반으로 인성교육, 언어창의교육, 역량교육을 지향합니다. 몸과 마음이 건강한 창의적인 차세대 글로벌 리더 교육을 합니다. 
+        <p class="reveal-up"><b><span class="text-kinder">더크는킨더</span></b>는 0~5세 영유아를 위한 국가수준의 표준보육과정과 누리교육과정 기반으로 인성교육, 언어창의교육, 역량교육을 지향합니다. 몸과 마음이 건강한 창의적인 차세대 글로벌 리더 교육을 합니다. 
           <b><span class="text-jc">정철어학원</span></b>은 대한민국 최초의 유초중등 영어교육 프랜차이즈로 독창적인 교수법과 커리큘럼, 교재를 직접 만들어내며 영어교육의 새로운 길을 열고 있습니다. 다음세대 자녀들에게 필요한 4 Skills에 인성과 영성을 더한 새로운 프리미엄 영어교육 방향성을 제시합니다.</p>
         <div style="margin-top:1rem;display:flex;gap:.6rem;flex-wrap:wrap">
           <a href="#admission" class="btn primary">입학안내 보기</a>
@@ -154,7 +345,7 @@
       <!--머리글 제목과 내용 종료-->
       <!--중간 배너 부분 시작-->
       <div class="banner">
-        <p><img src="hero-banner.png" alt="2026학년도 더크는킨더 + 정철어학원 신입생 모집" /></p>
+        <p><img src="hero-banner.png" class="reveal-up" alt="2026학년도 더크는킨더 + 정철어학원 신입생 모집" /></p>
       </div>
       <!--중간 배너 부분 종료-->
     </div>
@@ -192,7 +383,7 @@
 
       <!--가로 2개 병렬 구조 시작-->
       <div class="grid-2">
-        <div class="card">
+        <div class="card reveal-up">
           <h3><span class="text-kinder">더크는킨더</span></h3>
             <p>2007년에 문을 연 더크는킨더는 아이들이 세상을 살아가는 힘을 스스로 키워가도록 돕는 역량 중심 교육기관입니다.</p>
             <p>0~2세 아이들은 매일의 따뜻한 품과 안정된 일상 속에서 조금씩 자라며 세상을 배워갑니다. 사랑받는 경험을 통해 자신을 믿는 법을 배우고, 그 마음이 3세 이후 누리과정으로 자연스럽게 이어질 수 있도록, 아이의 하루를 정성으로 채워갑니다.</p>
@@ -200,7 +391,7 @@
             <p>언어를 통한 표현력, 친구와의 소통, 창의적 탐구활동까지 — 모든 순간이 아이의 가능성을 확장하는 배움의 과정입니다. 아이들이 “할 수 있다”는 자신감을 느끼며, 즐겁게 배우는 경험이 곧 미래를 살아가는 힘이 되도록 함께합니다.</p>
             <p>더크는킨더는 앞으로도 아이 한 명 한 명의 마음에 귀 기울이며, 유아중심 놀이학습과 초등연계 교육과정으로 아이들이 행복하게 배우고 단단하게 자라나는 성장을 함께 만들어가겠습니다.</p>
         </div>
-        <div class="card">
+        <div class="card reveal-up">
           <h3><span class="text-jc">정철어학원</span></h3>
             <p>정철 선생님은 50년 넘게 영어교육에 헌신하며 수많은 아이들에게 ‘영어로 세상을 바라보는 힘’을 선물하셨습니다. 1990년, 강남역 작은 교실에서 시작된 정철어학원은 이제 전국으로 뻗어나간 대한민국 영어교육의 시작점이 되었습니다.</p>
             <p>부모님들의 간절한 바람 속에서 1995년 탄생한 대한민국 어린이 영어학원 프랜차이즈 1호, 정철어학원은 영어를 단순히 배우는 공간이 아니라 아이들이 영어로 생각하고, 소통하며, 자신을 표현하는 혁신적인 공간이 되었습니다.</p> 
@@ -222,7 +413,7 @@
       <h2>교육과정</h2>
 
       <div class="grid-2">  <!--가로 2개 병렬-->
-        <div class="card">
+        <div class="card reveal-up">
           <h3><span class="text-kinder">더크는킨더 어린이집</span></h3>
           <ul>
             <li>표준보육과정</li>
@@ -230,7 +421,7 @@
             <li>절충형 융합교육과정</li>
           </ul>
         </div>
-        <div class="card">
+        <div class="card reveal-up">
           <h3><span class="text-jc">정철어학원 상도캠퍼스</span></h3>
           <ul>
             <li>유아영어 · 초등영어 · 중등영어</li>
@@ -242,21 +433,21 @@
       <br>
 
       <div class="grid-1"> <!--가로 1개-->
-        <div class="card">
+        <div class="card reveal-up">
           <h3><span class="text-jc">정철어학원 커리큘럼 로드맵</span></h3>
-          <p><img src="jc-roadmap.png" alt="정철어학원 커리큘럼 로드맵" /></p>
+          <p><img src="jc-roadmap.png" class="reveal-up" alt="정철어학원 커리큘럼 로드맵" /></p>
         </div>
       </div>
       <br>
 
       <div class="grid-2">
-        <div class="card">
+        <div class="card reveal-up">
           <h3><span class="text-jc">정철어학원 영어교육</span></h3>
-          <p><img src="jc-curri.png" alt="정철어학원 영어교육" /></p>
+          <p><img src="jc-curri.png" class="reveal-up" alt="정철어학원 영어교육" /></p>
         </div>
-        <div class="card">
+        <div class="card reveal-up">
           <h3><span class="text-jc">AI인증제</span></h3>
-          <p><img src="ai-cert.png" alt="AI인증제" /></p>
+          <p><img src="ai-cert.png" class="reveal-up" alt="AI인증제" /></p>
         </div>
       </div>
 
@@ -269,7 +460,7 @@
     <div class="container">
       <h2>입학안내</h2>
       <div class="grid-2">
-        <div class="card">
+        <div class="card reveal-up">
           <h3>모집 대상 및 절차</h3>
           <ol>
             <li>상담 신청 – 전화 또는 온라인 접수</li>
@@ -278,7 +469,7 @@
             <li>등록 및 오리엔테이션</li>
           </ol>
         </div>
-        <div class="card">
+        <div class="card reveal-up">
           <h3>상담예약</h3>
           <p>원하시는 날짜와 시간을 남겨주시면 연락드립니다.</p>
           <a href="#contact" class="btn primary">상담신청</a>
@@ -293,17 +484,17 @@
     <div class="container">
       <h2>상담문의</h2>
       <div class="grid-2">
-        <div class="card">
+        <div class="card reveal-up">
           <h3>온라인 상담신청</h3>
           <div style="position:relative;min-height:800px">
-            <iframe title="입학상담 신청서" src="https://forms.gle/AemcxPA4ZhXAPgus9?embedded=true" style="width:100%;height:1200px;border:0" loading="lazy"></iframe>
+            <iframe title="입학상담 신청서" src="https://forms.gle/AemcxPA4ZhXAPgus9?embedded=true" class="reveal-up" style="width:100%;height:1200px;border:0" loading="lazy"></iframe>
           </div>
           <div style="margin-top:.8rem;display:flex;gap:.6rem;flex-wrap:wrap">
             <a class="btn accent" href="https://forms.gle/AemcxPA4ZhXAPgus9" target="_blank" rel="noopener">새 창으로 열기</a>
           </div>
         </div>
 
-        <div class="card">
+        <div class="card reveal-up">
          <h3>연락처 및 오시는 길</h3>
 
          <!-- 주소 + 연락처 (옵션2 적용) -->
@@ -332,25 +523,54 @@
           </iframe>
          </div>
 
-         <!-- 지도 버튼 (옵션3 적용 — 아이콘형 디자인) -->
-         <div style="display:flex; gap:.5rem; flex-wrap:wrap; margin-top:1rem;">
-          <a class="btn"
-           style="background:#03c75a; color:white; display:inline-flex; align-items:center; gap:.35rem; padding:.65rem 1rem; font-weight:600;"
-           href="https://map.naver.com/v5/search/%EC%84%B1%EB%8C%80%EB%A1%9C31%EA%B8%B8%202"
-           target="_blank">🟢 네이버지도</a>
+         
+        <!-- 지도 버튼 (공식 로고 느낌 + 프리미엄 스타일) -->
+        <div class="map-buttons">
+          <a class="map-btn map-btn-naver"
+             href="https://map.naver.com/v5/search/%EC%84%B1%EB%8C%80%EB%A1%9C31%EA%B8%B8%202"
+             target="_blank" rel="noopener">
+            <!-- 네이버 느낌 아이콘 (녹색 배경 + 흰 동그라미) -->
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="9" fill="#ffffff"></circle>
+            </svg>
+            <span>네이버 지도</span>
+          </a>
 
-          <a class="btn"
-           style="background:#fee500; color:#3a1d1d; display:inline-flex; align-items:center; gap:.35rem; padding:.65rem 1rem; font-weight:600;"
-           href="https://map.kakao.com/?q=%EC%84%B1%EB%8C%80%EB%A1%9C31%EA%B8%B8%202"
-           target="_blank">🟡 카카오맵</a>
+          <a class="map-btn map-btn-kakao"
+             href="https://map.kakao.com/?q=%EC%84%B1%EB%8C%80%EB%A1%9C31%EA%B8%B8%202"
+             target="_blank" rel="noopener">
+            <!-- 카카오 느낌 아이콘 (갈색 점이 있는 말풍선 느낌) -->
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M12 4C7.58 4 4 7.02 4 10.73C4 13.02 5.6 15.0 8.06 16.02L7.2 19.5L11 16.96C11.32 16.99 11.66 17.01 12 17.01C16.42 17.01 20 13.99 20 10.28C20 6.57 16.42 4 12 4Z" fill="#3a1d1d"/>
+            </svg>
+            <span>카카오맵</span>
+          </a>
 
-          <a class="btn"
-           style="border:1px solid #d1d5db; display:inline-flex; align-items:center; gap:.35rem; padding:.65rem 1rem; font-weight:600;"
-           href="https://maps.google.com/?q=%EC%84%B1%EB%8C%80%EB%A1%9C31%EA%B8%B8%202"
-           target="_blank">🌐 Google Maps</a>
-         </div>
-
+          <a class="map-btn map-btn-google"
+             href="https://maps.google.com/?q=%EC%84%B1%EB%8C%80%EB%A1%9C31%EA%B8%B8%202"
+             target="_blank" rel="noopener">
+            <!-- 구글 느낌 아이콘 (동그란 지구본 모양) -->
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="9" fill="#e5e7eb"></circle>
+              <path d="M7 12h10" stroke="#4b5563" stroke-width="1.4" />
+              <path d="M12 7c1.8 1.7 2.7 3.3 2.7 5s-.9 3.3-2.7 5c-1.8-1.7-2.7-3.3-2.7-5s.9-3.3 2.7-5Z" stroke="#4b5563" stroke-width="1.2" fill="none"/>
+            </svg>
+            <span>Google Maps</span>
+          </a>
         </div>
+
+        <!-- 주차 안내 -->
+        <div style="margin-top:.9rem; font-size:.9rem; color:#6b7280; line-height:1.6; display:flex; gap:.4rem;">
+         <div style="margin-top:.1rem;">🚗</div>
+         <div>
+          <strong>주차 안내</strong><br>
+          기관 사정상 주차 공간이 협소하여, 방문 시 가급적 대중교통 이용을 권장드립니다.<br> 
+          건물 바로앞에 동작12번 마을버스 정류장이 있습니다.<br>
+          개별상담 예약 시에는 주차 공간을 마련해드립니다. 
+         </div>
+        </div>
+
+       </div>
 
       </div>
     </div>
@@ -358,7 +578,7 @@
   <!--4. 상담문의 종료-->
 
   <footer>
-  <div class="container footer-inner">
+   <div class="container footer-inner">
     <div class="footer-logos">
       <img src="logo-thekinder.png" alt="더크는킨더 로고" />
       <img src="logo-jc.png" alt="정철어학원 로고" />
@@ -366,5 +586,78 @@
     <div class="footer-copy">
       © 2025 더크는킨더 정철어학원 상도캠퍼스. All Rights Reserved.
     </div>
-  </div>
-</footer>
+   </div>
+  </footer>
+
+<script>
+const sections = document.querySelectorAll('section[id]');
+const menuLinks = document.querySelectorAll('.menu a[href^="#"]');
+
+function onScrollHighlight(){
+  let currentId = null;
+  let currentSection = null;
+  const scrollY = window.pageYOffset;
+
+  sections.forEach(section => {
+    const rect = section.getBoundingClientRect();
+    const sectionTop = scrollY + rect.top;
+    const sectionHeight = section.offsetHeight;
+
+    if (scrollY >= sectionTop - sectionHeight * 0.3 &&
+        scrollY < sectionTop + sectionHeight * 0.7){
+      currentId = section.getAttribute('id');
+      currentSection = section;
+    }
+  });
+
+  // 메뉴 active 처리
+  menuLinks.forEach(link => {
+    link.classList.remove('active');
+    if (currentId){
+      const href = link.getAttribute('href');
+      if (href === '#' + currentId){
+        link.classList.add('active');
+      }
+    }
+  });
+
+  // 섹션 in-view 클래스 처리 (밑줄 애니메이션용)
+  sections.forEach(section => {
+    if (section === currentSection){
+      section.classList.add('in-view');
+    }else{
+      section.classList.remove('in-view');
+    }
+  });
+}
+
+window.addEventListener('scroll', onScrollHighlight);
+window.addEventListener('load', onScrollHighlight);
+</script>
+
+<script>
+// 섹션/카드 등장 애니메이션 - reveal-up
+const revealElems = document.querySelectorAll('.reveal-up');
+
+if ('IntersectionObserver' in window){
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        // 한 번 나타난 요소는 계속 보이게 두고 관찰 종료
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.05   // 요소의 5% 정도가 보이면 발동
+  });
+
+  revealElems.forEach(el => revealObserver.observe(el));
+}else{
+  // 아주 구형 브라우저용: 그냥 바로 다 보이게
+  revealElems.forEach(el => el.classList.add('is-visible'));
+}
+</script>
+
+
+</body>  
