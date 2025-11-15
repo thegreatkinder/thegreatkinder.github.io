@@ -225,11 +225,34 @@
       .hero{padding-top:2.5rem}
     }
     @media (max-width:640px){
-      .nav{flex-direction:column;align-items:flex-start;gap:.4rem}
-      .menu{gap:1rem;font-size:.85rem}
-      .hero h1{font-size:1.7rem}
-      .hero .card{padding:1.3rem 1.4rem}
-      section{padding:2.4rem 0}
+  /* 상단 네비게이션 세로 배치 + 가운데 정렬 */
+  .nav{
+    flex-direction:column;
+    align-items:center;   /* ← flex-start 에서 center 로 */
+    gap:.4rem;
+  }
+
+  .menu{
+    gap:1rem;
+    font-size:.85rem;
+    justify-content:center;  /* ← 메뉴 항목 가로 가운데 정렬 */
+  }
+
+  /* [2] 타이틀 가운데 정렬까지 같이 처리 (아래 설명 참고) */
+  .hero-content{
+    text-align:center;       /* 왼쪽 블록 전체 텍스트 가운데 정렬 */
+  }
+  .hero h1{
+    font-size:1.7rem;
+    text-align:center;       /* 메인 문구 가운데 정렬 */
+  }
+
+  .hero .card{padding:1.3rem 1.4rem}
+  section{padding:2.4rem 0}
+}
+
+
+
 
       /* ★ 추가: 모바일에서 버튼 가운데 정렬 */
       .cta-row{justify-content:center !important;text-align:center;width:100%;}
@@ -246,6 +269,7 @@
     .hero-swiper{width: 100%;max-width: 1180px;margin: 1.2rem auto; /* 상하 여백 균형 있게 */ padding: 0; /* 내부 위아래 여백 추가 */ border-radius: 26px;overflow: hidden;box-shadow:0 12px 25px rgba(0,0,0,0.07), 0 4px 12px rgba(0,0,0,0.05);background: linear-gradient(125deg, #f9faf9 0%, #eaf5ee 45%, #fefefe 100%);}
     .hero-swiper .swiper-slide{display:flex;justify-content:center;align-items:center;}
     .hero-swiper .hero-img{width:100%;height:auto;display:block;border-radius:0;}
+    
     @media (min-width:1024px){
       .hero-swiper{
         max-width:1250px;
@@ -259,6 +283,58 @@
 
     /* 상담문의 섹션 카드 살짝 프리미엄 그림자 */
     #contact .card{box-shadow:0 10px 25px rgba(15,23,42,.08);}
+
+
+    /* ★ 여기 아래에 STYLE 1 버튼 CSS 붙여넣기 ★ */
+    .btn-primary,
+    .btn-open-form {
+      padding: 0.85rem 2.1rem;
+      border: none;
+      border-radius: 999px;
+      background: linear-gradient(135deg,#ff6f5c,#e73328);
+      color:#fff;
+      font-size:1rem;
+      font-weight:700;
+      letter-spacing:-0.2px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:0.4rem;
+      box-shadow:
+        0 8px 24px rgba(231,51,40,0.35),
+        0 0 12px rgba(255,171,160,0.45) inset;
+      transition:
+        transform .25s cubic-bezier(.22,.61,.36,1),
+        box-shadow .25s cubic-bezier(.22,.61,.36,1),
+        opacity .25s ease;
+    }
+    .btn-primary:hover,
+    .btn-open-form:hover {
+      transform:translateY(-3px);
+      box-shadow:
+        0 12px 28px rgba(231,51,40,0.45),
+        0 0 18px rgba(255,171,160,0.55) inset;
+      opacity:.97;
+    }
+    .btn-primary:active,
+    .btn-open-form:active {
+      transform:translateY(0);
+      box-shadow:
+        0 6px 16px rgba(231,51,40,0.32),
+        0 0 10px rgba(255,171,160,0.35) inset;
+      opacity:.92;
+    }
+
+    .btn-primary .icon,
+    .btn-open-form .icon {
+      font-size:1.15rem;
+    }
+
+
+
+
+
+
 
   </style>
 </head>
@@ -311,7 +387,7 @@
                 <span class="icon">📞</span>
                 입학·상담 문의하기
               </button>
-              <span class="note">※ 2026학년도 입학 상담 예약 접수 중</span>
+              <span class="note">※ 2026학년도 입학 상담 예약 접수중</span>
             </div>
           </div>
 
