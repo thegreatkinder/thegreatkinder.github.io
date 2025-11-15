@@ -249,13 +249,22 @@
   .hero .card{padding:1.3rem 1.4rem}
   section{padding:2.4rem 0}
 
+  /* ✅ 푸터 전체를 세로 + 가운데 정렬 */
+  .footer-inner{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;   /* 안의 텍스트도 가운데 */
+    gap: 0.6rem;
+  }
+
   /* 로고 2개 가운데 정렬 */
   .footer-logos {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 0;          /* 두 로고 사이 간격 줄이기 (필요하면 숫자 조절) */
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.2rem;
   }
 
   /* footer 텍스트 가운데 정렬 */
@@ -263,11 +272,17 @@
     text-align: center;
   }
 
+   /* 모바일에서 상단 CTA 버튼 가운데 정렬 */
+  .cta-row{
+    justify-content:center !important;
+    text-align:center;
+    width:100%;
+  }
+  .cta-row .btn-primary{
+    margin:0 auto;
+  }
 
 }
-
-
-
 
       /* ★ 추가: 모바일에서 버튼 가운데 정렬 */
       .cta-row{justify-content:center !important;text-align:center;width:100%;}
