@@ -368,8 +368,86 @@
     }
 
 
+  /* === 오시는 길 지도 카드 스타일 (최종 정리 버전) === */
+.map-card{
+  border-radius:1rem;                 /* 바깥 카드만 둥글게 */
+  overflow:hidden;                    /* 안쪽 모서리 깔끔하게 잘라냄 */
+  border:none;
+  box-shadow:0 12px 30px rgba(15,23,42,.06);
+  background:#f9fafb;
+}
 
+/* 지도 부분: 모서리 0 (라운드 필요 없음) */
+.map-frame-wrap{
+  position:relative;
+  width:100%;
+  height:360px;
+  border-radius:0;
+}
 
+/* 구글맵 iframe */
+.map-frame-wrap iframe{
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+/* 아래쪽 지도 서비스 버튼 영역 */
+.map-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+  padding:.6rem .9rem .9rem;
+  background:#f9fafb;
+  border-top:1px solid #e5e7eb;
+  border-radius:0;                     /* 위쪽/아래쪽 다 직각 */
+  justify-content:flex-start;
+}
+
+.map-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:.45rem 1rem;
+  border-radius:999px;
+  font-size:.78rem;
+  font-weight:600;
+  border:1px solid transparent;
+  cursor:pointer;
+  text-decoration:none;
+  transition:transform .12s ease-out, box-shadow .12s ease-out, opacity .12s ease-out;
+}
+.map-btn:hover{
+  transform:translateY(-1px);
+  box-shadow:0 6px 16px rgba(15,23,42,0.14);
+  opacity:.96;
+}
+.map-btn:active{
+  transform:translateY(0);
+  box-shadow:0 3px 10px rgba(15,23,42,0.12);
+}
+
+/* 각 서비스 색상 */
+.map-btn.naver{
+  background:#00c73c;
+  color:#fff;
+}
+.map-btn.kakao{
+  background:#ffe812;
+  color:#111827;
+}
+.map-btn.gmap{
+  background:#ffffff;
+  color:#374151;
+  border-color:#d1d5db;
+}
+
+/* 모바일에서 버튼 가운데 정렬 */
+@media(max-width:640px){
+  .map-actions{
+    justify-content:center;
+  }
+}
 
 
 
@@ -424,7 +502,7 @@
                 <span class="icon">📞</span>
                 입학·상담 문의하기
               </button>
-              <span class="note">※ 2026학년도 입학 상담 예약 접수중</span>
+              <span class="note"><span class="jc-text">※ 2026학년도 입학 상담 예약 접수중</span></span>
             </div>
           </div>
 
@@ -932,6 +1010,8 @@
     </div>
   </div>
 
+
+
   <!-- 주차 안내 -->
   <div class="contact-item">
     <div class="icon-box">
@@ -982,17 +1062,64 @@
 
         <!-- 지도 -->
         <div class="reveal-up" style="margin-top:2rem;">
-          <h3 style="font-size:1rem;margin-bottom:.8rem;color:#0f172a;">오시는 길</h3>
-          <div style="border-radius:1rem;overflow:hidden;border:1px solid #e5e7eb;box-shadow:0 12px 30px rgba(15,23,42,.06);">
-            <iframe title="더크는킨더 정철어학원 상도캠퍼스 오시는 길" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.2637097749313!2d126.947!3d37.499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0:0x0!2z7ISc7Jq47YOA7YSw7Iqk!5e0!3m2!1sko!2skr!4v0000000000000" width="100%" height="360" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
+  <h3 style="font-size:1rem;margin-bottom:.8rem;color:#0f172a;">오시는 길</h3>
 
-          <!-- 주소 및 연락처 하단 재강조 -->
-          <div style="margin-top:1rem;font-size:.85rem;color:#4b5563;">
-            <strong>주소</strong> : (우 06962) 서울특별시 동작구 성대로31길 2 (상도동)<br />
-            <strong>전화</strong> : <a href="tel:028230733">02-823-0733</a> | <a href="tel:01033760038">010-3376-0038</a>
-          </div>
-        </div>
+  <!-- 지도 카드 -->
+  <div class="map-card">
+
+    <!-- 지도 + 오버레이 -->
+    <div class="map-frame-wrap">
+      
+      
+      <!-- 주소 박스 (지도가 아니라 우리 HTML) -->
+      <!--<div class="map-overlay">
+        <strong>서울특별시 동작구 성대로31길 2</strong>
+        <a href="https://www.google.com/maps/search/?api=1&query=%EC%84%B1%EB%8C%80%EB%A1%9C31%EA%B8%B8+2%2C+%EB%8F%99%EC%9E%91%EA%B5%AC" target="_blank" rel="noopener">
+          큰 지도 보기
+        </a>
+      </div>-->
+
+      <!-- 실제 구글 지도 iframe -->
+      <iframe
+  width="100%"
+  height="360"
+  style="border:0;"
+  loading="lazy"
+  allowfullscreen
+  referrerpolicy="no-referrer-when-downgrade"
+  src="https://www.google.com/maps?q=%EC%84%B1%EB%8C%80%EB%A1%9C31%EA%B8%B8%202%2C%20%EB%8F%99%EC%9E%91%EA%B5%AC%20%EC%84%9C%EC%9A%B8&output=embed">
+</iframe>
+    </div>
+
+    <!-- 아래 지도 서비스 버튼들 -->
+    <div class="map-actions">
+      <a class="map-btn naver"
+         href="https://map.naver.com/p/search/%EC%84%B1%EB%8C%80%EB%A1%9C31%EA%B8%B8%202%20%EB%8F%99%EC%9E%91%EA%B5%AC"
+         target="_blank" rel="noopener">
+        네이버 지도
+      </a>
+      <a class="map-btn kakao"
+         href="https://map.kakao.com/?q=%EC%84%B1%EB%8C%80%EB%A1%9C31%EA%B8%B8%202%20%EB%8F%99%EC%9E%91%EA%B5%AC"
+         target="_blank" rel="noopener">
+        카카오맵
+      </a>
+      <a class="map-btn gmap"
+         href="https://www.google.com/maps/search/?api=1&query=%EC%84%B1%EB%8C%80%EB%A1%9C31%EA%B8%B8+2%2C+%EB%8F%99%EC%9E%91%EA%B5%AC"
+         target="_blank" rel="noopener">
+        Google Maps
+      </a>
+    </div>
+  </div>
+
+  <!-- 주소 / 전화 텍스트 하단 -->
+  <div style="margin-top:1rem;font-size:.85rem;color:#4b5563;">
+    <strong>주소</strong> : (우 06962) 서울특별시 동작구 성대로31길 2 (상도동)<br />
+    <strong>전화</strong> : <a href="tel:028230733">02-823-0733</a> | <a href="tel:01033760038">010-3376-0038</a>
+  </div>
+</div>
+
+
+
       </div>
     </section>
 
